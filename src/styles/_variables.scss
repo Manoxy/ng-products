@@ -1,0 +1,56 @@
+// Paleta Corporativa
+$brand-primary: #1e293b;       // Slate oscuro
+$brand-secondary: #0284c7;     // Azul cerúleo
+$brand-tertiary: #02c775;     // Azul cerúleo
+$brand-accent: #0f766e;        // Verde azulado
+
+// Estados
+$state-success: #16a34a;
+$state-info: #1b40e3;
+$state-warning: #d97706;
+$state-danger: #dc2626;
+
+// Superficies y Neutros
+$bg-main: #f8fafc;
+$bg-surface: #ffffff;
+$border-color: #e2e8f0;
+$text-main: #0f172a;
+$text-muted: #64748b;
+
+// Bordes y Sombras
+$radius-sm: 6px;
+$radius-md: 10px;
+$shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+
+  svg {
+    height: 40px; // Ajusta la altura deseada
+    width: auto;
+  }
+
+  // Aplicación de los colores corporativos a las piezas del SVG
+  .brand-primary {
+    fill: $brand-primary;
+  }
+
+  .brand-secondary {
+    fill: $brand-secondary;
+  }
+
+  .brand-tertiary {
+    fill: $brand-tertiary;
+  }
+
+  .logo-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    fill: $brand-primary;
+  }
+}

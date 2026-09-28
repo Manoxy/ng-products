@@ -1,0 +1,19 @@
+<div class="app-logo">
+  <svg viewBox="0 0 220 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- ISOTIPO GEOMÉTRICO -->
+    <path class="brand-primary" d="M10 38L22 10H34L22 38H10Z" />
+    <path class="brand-secondary" d="M25 38L37 10H49L37 38H25Z" />
+    <circle class="brand-tertiary" cx="48" cy="15" r="5" />
+
+    <!-- TEXTO TRADUCIDO DESDE EL JSON -->
+    <text x="65" y="28" class="logo-text">
+      {{ 'LOGO.COMPANY_NAME_PART_1' | translate }}
+      <tspan class="brand-secondary">{{ 'LOGO.COMPANY_NAME_PART_2' | translate }}</tspan>
+    </text>
+
+    <!-- Subtexto opcional o Slogan -->
+    <text x="65" y="40" class="logo-subtext">
+      {{ 'LOGO.SLOGAN' | translate }}
+    </text>
+  </svg>
+</div>
