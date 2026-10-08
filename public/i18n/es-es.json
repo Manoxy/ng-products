@@ -1,10 +1,50 @@
 {
   "GENERAL": {
-    "TITLE": "Productos"
+    "TITLE": "Productos",
+    "SLOGAN": "Digital Solutions",
+    "LANG": "Idioma: ",
+    "PAGES": {
+      "LOGIN": "Iniciar Sesión",
+      "HOME": "Inicio",
+      "PRODUCTS": "Productos",
+      "CONFIG": "Configuración"
+    }
+  },
+  "SHARED": {
+    "DEFAULT_ERROR": "Ha ocurrido un error, por favor inténtelo otra vez o póngase en contacto con nosotros"
   },
   "LOGO": {
-    "COMPANY_NAME_PART_1": "MI",
+    "COMPANY_NAME_PART_1": "MI ",
     "COMPANY_NAME_PART_2": "EMPRESA",
-    "SLOGAN": "Soluciones Digitales"
+    "COMPANY_NAME": "Mi Empresa",
+    "SLOGAN": "Digital Solutions"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar Sesión",
+    "USER": "Usuario",
+    "PWD": "Contraseña",
+    "SUBMIT": "Iniciar Sesión",
+    "FORGOT_PWD": "Olvidé mi contraseña",
+    "FOOTER": {
+      "TITLE": "HARDWARE & INFRAESTRUCTURA TI",
+      "SUB_TITLE": "Con entrega electrónica y postal"
+    },
+    "MESSAGES": {
+      "OK_LOGIN": "Se ha logado correctamente",
+      "WRONG_PWD": "Usuario o contraseña incorrecta, por favor inténtelo otra vez"
+    }
+  },
+  "HEADER": {
+    "LOGO_TITLE": "Mi Empresa Soluciones Digitales, S.L.",
+    "MY_ACCOUNT": "Mi Cuenta",
+    "LANGUAGES": {
+      "SPANISH": "Español",
+      "ENGLISH": "Inglés"
+    },
+    "LOGOUT": "Cerrar sesión"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Copyright ©{{date}} Mi Empresa Soluciones Digitales, S.L.",
+    "LEGAL_INFO": "Aviso Legal"
   }
 }

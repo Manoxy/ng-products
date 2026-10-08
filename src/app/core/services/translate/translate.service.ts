@@ -1,12 +1,12 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 import {
-  LANGUAGES,
-  LanguageCode,
   DEFAULT_LANGUAGE,
+  LanguageCode,
+  LANGUAGES,
   STORAGE_KEYS,
 } from '../../../shared/constants/AppConstants';
+import { firstValueFrom } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,26 +14,25 @@ import {
 export class TranslateService {
   private http = inject(HttpClient);
 
-  // Idioma activo con tipo seguro
   currentLang = signal<LanguageCode>(DEFAULT_LANGUAGE);
-
-  private translations = signal<Record<string, any>>({});
+  private translationsSignal = signal<Record<string, any>>({});
+  public readonly translations = this.translationsSignal.asReadonly();
 
   constructor() {
-    // Recuperar preferencia guardada o usar el idioma por defecto
     const savedLang = localStorage.getItem(STORAGE_KEYS.USER_LANG) as LanguageCode;
     const initialLang =
       savedLang === LANGUAGES.SPANISH || savedLang === LANGUAGES.ENGLISH
         ? savedLang
         : DEFAULT_LANGUAGE;
 
+    // Cargar las traducciones iniciales
     this.setLanguage(initialLang);
   }
 
   async setLanguage(lang: LanguageCode): Promise<void> {
     try {
       const data = await firstValueFrom(this.http.get<Record<string, any>>(`/i18n/${lang}.json`));
-      this.translations.set(data);
+      this.translationsSignal.set(data);
       this.currentLang.set(lang);
       localStorage.setItem(STORAGE_KEYS.USER_LANG, lang);
     } catch (error) {
@@ -41,18 +40,31 @@ export class TranslateService {
     }
   }
 
-  translate(key: string): string {
+  translate(key: string, params?: Record<string, unknown>): string {
+    if (!key) return '';
+
     const keys = key.split('.');
-    let result: any = this.translations();
+    let result: any = this.translationsSignal();
 
     for (const k of keys) {
-      if (result && result[k] !== undefined) {
+      if (result && typeof result === 'object' && k in result) {
         result = result[k];
       } else {
         return key;
       }
     }
 
-    return typeof result === 'string' ? result : key;
+    if (typeof result !== 'string') {
+      return key;
+    }
+
+    if (params) {
+      Object.keys(params).forEach((paramKey) => {
+        const value = params[paramKey];
+        result = result.replace(new RegExp(`{{\\s*${paramKey}\\s*}}`, 'g'), String(value ?? ''));
+      });
+    }
+
+    return result;
   }
 }

@@ -1,0 +1,19 @@
+@if (messagesService.messages().length > 0) {
+  <div class="messages-container">
+    @for (msg of messagesService.messages(); track msg.id) {
+      <div class="alert-banner" [ngClass]="'alert-' + msg.type">
+        <div class="alert-content">
+          {{ msg.text | translate }}
+        </div>
+        <button
+          type="button"
+          class="close-btn"
+          (click)="messagesService.dismiss(msg.id)"
+          aria-label="Cerrar"
+        >
+          &times;
+        </button>
+      </div>
+    }
+  </div>
+}

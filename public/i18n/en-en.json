@@ -1,10 +1,50 @@
 {
   "GENERAL": {
-    "TITLE": "Products"
+    "TITLE": "Products",
+    "SLOGAN": "Digital Solutions",
+    "LANG": "Language: ",
+    "PAGES": {
+      "LOGIN": "Login",
+      "HOME": "Home",
+      "PRODUCTS": "Products",
+      "CONFIG": "Configuration"
+    }
+  },
+  "SHARED": {
+    "DEFAULT_ERROR": "An error has occurred, please try again or contact us."
   },
   "LOGO": {
-    "COMPANY_NAME_PART_1": "MY",
-    "COMPANY_NAME_PART_2": "COMPANY",
+    "COMPANY_NAME_PART_1": "My ",
+    "COMPANY_NAME_PART_2": "Company",
+    "COMPANY_NAME": "My Company",
     "SLOGAN": "Digital Solutions"
+  },
+  "LOGIN": {
+    "TITLE": "Init Session",
+    "USER": "User",
+    "PWD": "Password",
+    "SUBMIT": "Init Session",
+    "FORGOT_PWD": "I forgot my password",
+    "FOOTER": {
+      "TITLE": "HARDWARE & INFRASTRUCTURE IT",
+      "SUB_TITLE": "With electronic and postal delivery"
+    },
+    "MESSAGES": {
+      "OK_LOGIN": "You have logged in successfully.",
+      "WRONG_PWD": "Incorrect username or password; please try again."
+    }
+  },
+  "HEADER": {
+    "LOGO_TITLE": "My Company Digital Solutions, S.L.",
+    "MY_ACCOUNT": "My Account",
+    "LANGUAGES": {
+      "SPANISH": "Spanish",
+      "ENGLISH": "English"
+    },
+    "LOGOUT": "Log out"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "Copyright ©{{date}} Mi Company Digital Solutions, S.L.",
+    "LEGAL_INFO": "Legal Info"
   }
 }

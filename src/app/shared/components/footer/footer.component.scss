@@ -1,0 +1,66 @@
+@use 'styles/variables' as *;
+
+// 1. Estructura común
+.app-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+
+  .footer-features {
+    max-width: 960px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
+
+    .features-content {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+
+      .separator {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    }
+
+    .sub-features {
+      margin-top: 0.3rem;
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+  }
+
+  .footer-legal {
+    border-top: 1px solid var(--footer-border-color);
+    padding: 1rem;
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.9;
+
+    span { margin-right: 20%; }
+  }
+
+  // 2. Modificador: Público
+  &--public {
+    background-color: $background;
+    color: #ffffff;
+    padding-top: 1.5rem;
+    --footer-border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  // 3. Modificador: Logado
+  &--logged {
+    background-color: whitesmoke;
+    color: $text-main;
+    --footer-border-color: rgba(0, 0, 0, 0.08);
+  }
+}

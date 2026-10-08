@@ -4,13 +4,14 @@ import { TranslateService } from '../../core/services/translate/translate.servic
 @Pipe({
   name: 'translate',
   standalone: true,
-  pure: false, // Importante: 'pure: false' permite reaccionar dinámicamente al cambio de idioma
+  pure: false, // Importante: para que reevalúe en cambios de estado
 })
 export class TranslatePipe implements PipeTransform {
   private translateService = inject(TranslateService);
 
-  transform(key: string): string {
-    if (!key) return '';
-    return this.translateService.translate(key);
+  transform(key: string, params?: Record<string, unknown>): string {
+    // Al ejecutar translate(), internamente se lee this.translationsSignal(),
+    // lo cual notifica a Angular que vuelva a pintar el texto.
+    return this.translateService.translate(key, params);
   }
 }

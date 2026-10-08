@@ -1,0 +1,356 @@
+@use 'styles/variables' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.app-header {
+  background-color: $brand-secondary;
+  height: 64px;
+  width: 100%;
+  box-shadow: $shadow-card;
+
+  .header-container {
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// --------------------------------------------------
+// Sección Izquierda: Logo + Tab
+// --------------------------------------------------
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 95%;
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .nav-tabs {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+
+    .nav-tab {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: calc(100% - 12px); // Altura de pestaña
+      margin-top: 12px;
+      padding: 0 1.25rem;
+      color: rgba(#ffffff, 0.85);
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-radius: $radius-md $radius-md 0 0;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      // Estado :hover
+      &:hover {
+        color: #ffffff;
+        background-color: rgba(#ffffff, 0.15);
+      }
+
+      // Estado ACTIVO (Cuando estás en /home)
+      &.active {
+        color: #ffffff;
+        background-color: $brand-accent;
+        font-weight: 700;
+
+        // Línea inferior de acento (Efecto pestaña activa)
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: #ffffff; // O usa $brand-tertiary
+          border-radius: 3px 3px 0 0;
+        }
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Sección Derecha: Links + Desplegable
+// --------------------------------------------------
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .nav-link {
+    color: rgba(#ffffff, 0.9);
+    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+      background-color: rgba(#ffffff, 0.15);
+    }
+
+    &.active {
+      color: #ffffff;
+      background-color: rgba(#ffffff, 0.22);
+      font-weight: 600;
+    }
+
+    &--highlight {
+      border: 1px solid rgba(#ffffff, 0.4);
+
+      &:hover {
+        background-color: $brand-accent;
+        color: $bg-main;
+        border-color: #ffffff;
+      }
+    }
+  }
+}
+
+// --------------------------------------------------
+// Desplegable "Mi Cuenta"
+// --------------------------------------------------
+.user-dropdown-container {
+  position: relative;
+
+  .dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $brand-accent;
+    font-family: inherit;
+
+    .chevron-icon {
+      transition: transform 0.2s ease;
+    }
+
+    &.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: $radius-md;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    z-index: 100;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 0.4rem 1rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $text-main;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &--danger {
+        color: #dc2626;
+
+        &:hover {
+          background-color: rgba(#dc2626, 0.08);
+        }
+      }
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.08);
+      margin: 0.35rem 0;
+    }
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 6px 0;
+}
+
+.dropdown-item-wrapper {
+  position: relative; // Fundamental para posicionar el submenú respecto a esta fila
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: #2b2b2b;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f4f5f7;
+  }
+
+  &.active {
+    font-weight: 600;
+    color: #4a00e0;
+    background-color: #f0f0ff;
+  }
+
+  &--danger {
+    color: #d93025;
+    &:hover {
+      background-color: #fce8e6;
+    }
+  }
+
+  &--has-submenu {
+    justify-content: flex-start;
+
+    .chevron-left-icon {
+      font-size: 11px;
+      color: #707070;
+      margin-right: -2px;
+    }
+  }
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #e5e5e5;
+  margin: 4px 0;
+}
+
+/* Submenú posicionado a la izquierda */
+.submenu-menu.submenu-left {
+  position: absolute;
+  top: 0;
+  right: 100%; // Lo posiciona exactamente a la izquierda del menú principal
+  margin-right: 6px; // Espaciado entre menús
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-width: 150px;
+  z-index: 1001;
+  padding: 6px 0;
+}
+
+.flag-icon {
+  font-size: 16px;
+}
+
+// Reutilización de .app-logo
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+
+  svg {
+    height: 36px;
+    width: auto;
+  }
+
+  .brand-primary {
+    fill: $brand-primary;
+  }
+
+  .brand-secondary {
+    fill: $brand-secondary;
+  }
+
+  .brand-tertiary {
+    fill: $brand-tertiary;
+  }
+
+  .brand-accent {
+    fill: $brand-accent;
+  }
+
+  .logo-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    fill: #ffffff;
+  }
+}
+
+// Alineación general de enlaces con icono
+.nav-tab, .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; // Espacio uniforme entre el icono FontAwesome y el texto
+}
+
+// Icono dentro del menú desplegable
+.dropdown-item {
+  i {
+    width: 18px; // Ancho fijo para que los textos queden alineados
+    text-align: center;
+  }
+}
+
+// Rotación del chevron al desplegar
+.dropdown-trigger {
+  .chevron-icon {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  &.active .chevron-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}

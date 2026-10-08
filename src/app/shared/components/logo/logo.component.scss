@@ -1,0 +1,66 @@
+@use 'styles/variables' as *;
+
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    width: 280px;
+    height: 60px;
+  }
+
+  // Estilos del Isotipo (formas geométricas)
+  .brand-primary {
+    fill: $brand-primary;
+  }
+
+  .brand-secondary {
+    fill: $brand-secondary;
+  }
+
+  .brand-tertiary {
+    fill: $brand-tertiary;
+  }
+
+  // Estilos del Texto dentro del SVG
+  .logo-text {
+    fill: $brand-primary;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit;
+
+    .brand-secondary {
+      fill: $brand-secondary;
+    }
+  }
+
+  .logo-subtext {
+    fill: $bg-main;
+    font-size: 14px;
+    color: white;
+    font-family: inherit;
+  }
+
+  // MODIFICADOR: Variante para fondos oscuros (como la pantalla de Login)
+  &.on-dark {
+    .brand-primary {
+      fill: $bg-surface; // Blanco
+    }
+
+    .brand-secondary {
+      fill: $brand-tertiary; // O el color de acento que resalte más
+    }
+
+    .logo-text {
+      fill: $bg-surface; // Texto principal en blanco
+
+      .brand-secondary {
+        fill: $brand-tertiary;
+      }
+    }
+
+    .logo-subtext {
+      fill: rgba($bg-surface, 0.8); // Subtexto blanco con opacidad
+    }
+  }
+}

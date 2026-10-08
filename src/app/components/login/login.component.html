@@ -1,0 +1,40 @@
+<div class="login-wrapper">
+  <!-- Topbar fuera de la tarjeta blanca, sobre el fondo azul -->
+  <header class="login-topbar">
+    <app-logo />
+    <span class="login-slogan">{{ 'LOGO.SLOGAN' | translate }}</span>
+  </header>
+
+  <!-- Tarjeta principal de Login (contenedor centrado) -->
+  <main class="login-card">
+    <!-- Columna Izquierda: Formulario -->
+    <div class="login-card-form">
+      <h2>{{ 'LOGIN.TITLE' | translate }}</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+          <label for="username">{{ 'LOGIN.USER' | translate }}</label>
+          <input id="username" type="text" formControlName="username" autocomplete="username" />
+        </div>
+
+        <div class="form-field">
+          <label for="password">{{ 'LOGIN.PWD' | translate }}</label>
+          <input id="password" type="password" formControlName="password" autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="loginForm.invalid">
+          {{'LOGIN.SUBMIT' | translate}}
+        </button>
+
+        <a routerLink="/forgot-password" class="forgot-password">
+          {{ 'LOGIN.FORGOT_PWD' | translate }}
+        </a>
+      </form>
+    </div>
+
+    <!-- Columna Derecha: Panel de Ilustración / Servicios -->
+    <div class="login-card-media">
+      <img src="images/login-hero.svg" alt="Hardware & Infraestructura TI" />
+    </div>
+  </main>
+</div>

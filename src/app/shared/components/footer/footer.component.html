@@ -1,0 +1,17 @@
+<footer
+  class="app-footer"
+  [ngClass]="isLoggedIn() ? 'app-footer--logged' : 'app-footer--public'">
+
+  @if (!isLoggedIn()) {
+    <div class="footer-features">
+      <!-- Contenido exclusivo del footer público -->
+    </div>
+  }
+
+  <div class="footer-legal">
+    <span>
+      {{ 'FOOTER.COPYRIGHT' | translate: { date: date } }}
+      <a href="#">{{ 'FOOTER.LEGAL_INFO' | translate }}</a>
+    </span>
+  </div>
+</footer>

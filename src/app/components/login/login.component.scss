@@ -1,0 +1,186 @@
+@use 'styles/variables' as *;
+
+.login-wrapper {
+  min-height: 99vh;
+  background-color: $background; // Azul oscuro corporativo de fondo
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  // 1. BARRA SUPERIOR (Logo + Eslogan)
+  .login-topbar {
+    width: 100%;
+    max-width: 960px; // Coincide con el ancho máximo de la tarjeta
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .login-slogan {
+      color: $bg-surface;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  // 2. TARJETA CONTENEDORA PRINCIPAL
+  .login-card {
+    width: 100%;
+    max-width: 1200px;
+    background: $bg-surface;
+    border-radius: $radius-md;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr; // 2 Columna: Formulario (izq) e Ilustración (der)
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // 3. COLUMNA IZQUIERDA: FORMULARIO
+  .login-card-form {
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $bg-surface;
+
+    h2 {
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: $text-main;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    .form-field {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+
+      label {
+        width: 100px;
+        font-size: 1.2rem;
+        color: $text-main;
+        font-weight: 500;
+      }
+
+      input {
+        flex: 1;
+        height: 38px;
+        padding: 0 0.75rem;
+        margin-left: 15px;
+        border: 1px solid $border-color;
+        border-radius: $radius-sm;
+        font-size: 1.05rem;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+          border-color: $brand-secondary;
+          box-shadow: 0 0 0 3px rgba($brand-secondary, 0.15);
+        }
+      }
+    }
+
+    .btn-submit {
+      width: 100%;
+      max-width: 180px;
+      height: 40px;
+      margin: 1.75rem auto 1rem auto;
+      display: block;
+      background-color: $btn-submit;
+      color: $brand-secondary;
+      border: none;
+      border-radius: $radius-sm;
+      font-size: 1.325em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover:not(:disabled) {
+        background-color: #d0d0d0;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    .forgot-password {
+      display: block;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $brand-secondary;
+      text-decoration: none;
+      margin-top: 0.5rem;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: $brand-secondary;
+      }
+    }
+  }
+
+  // 4. COLUMNA DERECHA: ILUSTRACIÓN Y HARDWARE
+  .login-card-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .media-illustration {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+
+      img {
+        max-width: 50%;
+        object-fit: contain;
+      }
+    }
+
+    .media-footer {
+      text-align: center;
+      color: $bg-surface;
+
+      h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 0.4rem;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        font-weight: 300;
+      }
+    }
+  }
+
+  // 5. FOOTER
+  .login-footer {
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    text-align: center;
+
+    p {
+      margin: 0;
+    }
+  }
+}

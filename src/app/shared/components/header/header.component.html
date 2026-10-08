@@ -1,0 +1,113 @@
+<header class="app-header">
+  <div class="header-container">
+
+    <!-- Sección Izquierda: Logo + Tab Home -->
+    <div class="header-left">
+      <a routerLink="/" class="logo-link" title="Ir al inicio">
+        <div class="app-logo">
+          <svg viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="brand-primary" d="M5 30L15 10H25L15 30H5Z" />
+            <path class="brand-accent" d="M22 30L32 10H42L32 30H22Z" />
+            <circle class="brand-tertiary" cx="45" cy="12" r="4" />
+            <text x="58" y="28" class="logo-text">{{ 'LOGO.COMPANY_NAME' | translate }}</text>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Pestaña Home -->
+      <nav class="nav-tabs">
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-tab">
+          <i class="fa-solid fa-house nav-icon"></i>
+          <span>{{'GENERAL.PAGES.HOME' | translate}}</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Sección Derecha: Enlaces + Desplegable -->
+    <nav class="header-right">
+      <a routerLink="/products" routerLinkActive="active" class="nav-link">
+        <i class="fa-solid fa-box-archive nav-icon"></i>
+        <span>{{'GENERAL.PAGES.PRODUCTS' | translate}}</span>
+      </a>
+
+      @if (isLoggedIn()) {
+        <div class="user-dropdown-container" appClickOutside (clickOutside)="closeUserMenu()">
+          <button
+            type="button"
+            class="nav-link nav-link--highlight dropdown-trigger"
+            (click)="toggleUserMenu()"
+            [class.active]="isUserMenuOpen()">
+            <i class="fa-solid fa-user"></i>
+            <span>{{'HEADER.MY_ACCOUNT' | translate}}</span>
+            <i class="fa-solid fa-chevron-down chevron-icon"></i>
+          </button>
+
+          @if (isUserMenuOpen()) {
+            <div class="dropdown-menu">
+              <!-- Opción: Mi cuenta -->
+              <button type="button" class="dropdown-item">
+                <i class="fa-solid fa-user"></i>
+                <span>{{'HEADER.MY_ACCOUNT' | translate}}</span>
+              </button>
+
+              <div class="dropdown-divider"></div>
+
+              <!-- Opción: Cambio de idioma con Submenú a la izquierda -->
+              <div class="dropdown-item-wrapper">
+                <button
+                  type="button"
+                  class="dropdown-item dropdown-item--has-submenu"
+                  (click)="toggleLangMenu($event)">
+                  <i class="fa-solid fa-chevron-left chevron-left-icon"></i>
+                  <i class="fa-solid fa-globe"></i>
+                  <span>{{ 'GENERAL.LANG' | translate}} {{ currentLang().toUpperCase() }}</span>
+                </button>
+
+                <!-- Submenú de idiomas -->
+                @if (isLangMenuOpen()) {
+                  <div class="submenu-menu submenu-left">
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      [class.active]="currentLang() === languages.SPANISH"
+                      (click)="selectLang(languages.SPANISH, $event)">
+                      <span class="fi fi-es flag-icon"></span>
+                      <span>{{'HEADER.LANGUAGES.SPANISH' | translate}}</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      [class.active]="currentLang() === languages.ENGLISH"
+                      (click)="selectLang(languages.ENGLISH, $event)">
+                      <span class="fi fi-gb-eng flag-icon"></span>
+                      <span class="flag-icon">🇬🇧</span>
+                      <span>{{'HEADER.LANGUAGES.ENGLISH' | translate}}</span>
+                    </button>
+                  </div>
+                }
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <!-- Opción: Cerrar sesión -->
+              <button type="button" class="dropdown-item dropdown-item--danger" (click)="onLogout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>{{'HEADER.LOGOUT' | translate}}</span>
+              </button>
+            </div>
+          }
+        </div>
+      } @else {
+        <a routerLink="/login" routerLinkActive="active" class="nav-link nav-link--highlight">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>{{'GENERAL.PAGES.LOGIN' | translate}}</span>
+        </a>
+      }
+    </nav>
+
+  </div>
+</header>

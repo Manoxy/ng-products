@@ -1,0 +1,14 @@
+@if (!isLoginPage()) {
+<app-header />
+}
+
+@if (loadingService.isLoading()) {
+  <app-loading />
+}
+
+<main class="main-content">
+  <app-messages></app-messages>
+  <router-outlet />
+</main>
+
+<app-footer />
