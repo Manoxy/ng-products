@@ -1,1 +1,83 @@
-<p>products-detail works!</p>
+@if (isAllLoaded()) {
+  <div class="product-detail-container">
+
+    <div class="header-section">
+      <h2>
+        <i class="fa fa-folder-plus m-r-3px"></i>
+        {{ creationMode ? 'Crear Producto' : 'Editar Producto' }}
+      </h2>
+    </div>
+
+    <form [formGroup]="productForm" class="product-form">
+
+      <!-- Campos básicos -->
+      <div class="form-grid">
+        <!-- Fila 1: Nombre ocupa todo el ancho -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>{{'PRODUCTS.PRODUCTS_LIST.TABLE.NAME' | translate}}</mat-label>
+          <input matInput formControlName="name" [placeholder]="translateService.translate('PRODUCTS.PRODUCTS_DETAIL.NAME_PLACEHOLDER')" />
+        </mat-form-field>
+
+        <!-- Fila 2: Precio y Stock al 50% -->
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>{{'PRODUCTS.PRODUCTS_LIST.TABLE.PRICE' | translate}}</mat-label>
+          <input matInput type="number" formControlName="price" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>{{'PRODUCTS.PRODUCTS_LIST.TABLE.STOCK' | translate}}</mat-label>
+          <input matInput type="number" formControlName="stock" />
+        </mat-form-field>
+      </div>
+
+      <!-- Zona de Drag & Drop para la Imagen -->
+      <div class="image-upload-section">
+        <label class="section-label">{{'PRODUCTS.PRODUCTS_DETAIL.IMAGE.LABEL' | translate}}</label>
+
+        <div
+          class="drop-zone"
+          [class.dragging]="isDragging"
+          [class.has-image]="imagePreview()"
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+          onclick="document.getElementById('fileInput').click()">
+
+          <input
+            type="file"
+            id="fileInput"
+            hidden
+            accept="image/*"
+            (change)="onFileSelected($event)" />
+
+          @if (imagePreview()) {
+            <div class="preview-container">
+              <img [src]="imagePreview()" alt="Preview" />
+              <button mat-icon-button color="warn" class="remove-btn" (click)="removeImage($event)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          } @else {
+            <div class="placeholder-content">
+              <i class="fa fa-cloud-upload-alt upload-icon"></i>
+              <p>
+                {{'PRODUCTS.PRODUCTS_DETAIL.IMAGE.DROP_INFO' | translate}}
+                <span>{{'PRODUCTS.PRODUCTS_DETAIL.IMAGE.CLICK_SPAN' | translate}}</span>
+              </p>
+              <small>{{'PRODUCTS.PRODUCTS_DETAIL.IMAGE.SMALL' | translate}}</small>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="form-actions">
+        <button class="btn btn-secondary" (click)="cancel()">{{'SHARED.CANCEL' | translate}}</button>
+        <button class="btn btn-primary" (click)="createOrUpdateProduct()" [disabled]="productForm.invalid">
+          {{ (creationMode ? 'PRODUCTS.PRODUCTS_DETAIL.ACTIONS.SAVE' : 'PRODUCTS.PRODUCTS_DETAIL.ACTIONS.UPDATE') | translate }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+}

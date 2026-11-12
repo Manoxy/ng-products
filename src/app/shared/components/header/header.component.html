@@ -29,9 +29,9 @@
 
     <!-- Sección Derecha: Enlaces + Desplegable -->
     <nav class="header-right">
-      <a routerLink="/products" routerLinkActive="active" class="nav-link">
+      <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
         <i class="fa-solid fa-box-archive nav-icon"></i>
-        <span>{{'GENERAL.PAGES.PRODUCTS' | translate}}</span>
+        <span>{{'GENERAL.PAGES.PRODUCTS_LIST' | translate}}</span>
       </a>
 
       @if (isLoggedIn()) {
@@ -50,7 +50,7 @@
             <div class="dropdown-menu">
               <!-- Opción: Mi cuenta -->
               <button type="button" class="dropdown-item">
-                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-user secondary"></i>
                 <span>{{'HEADER.MY_ACCOUNT' | translate}}</span>
               </button>
 
@@ -62,9 +62,11 @@
                   type="button"
                   class="dropdown-item dropdown-item--has-submenu"
                   (click)="toggleLangMenu($event)">
-                  <i class="fa-solid fa-chevron-left chevron-left-icon"></i>
-                  <i class="fa-solid fa-globe"></i>
-                  <span>{{ 'GENERAL.LANG' | translate}} {{ currentLang().toUpperCase() }}</span>
+                  <i class="fa-solid fa-chevron-left chevron-left-icon accent"></i>
+                  <i class="fa-solid fa-globe accent"></i>
+                  <span>
+                    {{ 'GENERAL.LANG' | translate}}
+                  </span>
                 </button>
 
                 <!-- Submenú de idiomas -->
@@ -75,7 +77,7 @@
                       class="dropdown-item"
                       [class.active]="currentLang() === languages.SPANISH"
                       (click)="selectLang(languages.SPANISH, $event)">
-                      <span class="fi fi-es flag-icon"></span>
+                      <img src="images/flags/4x3/es.svg" alt="Español" class="flag-icon-svg" />
                       <span>{{'HEADER.LANGUAGES.SPANISH' | translate}}</span>
                     </button>
                     <button
@@ -83,8 +85,7 @@
                       class="dropdown-item"
                       [class.active]="currentLang() === languages.ENGLISH"
                       (click)="selectLang(languages.ENGLISH, $event)">
-                      <span class="fi fi-gb-eng flag-icon"></span>
-                      <span class="flag-icon">🇬🇧</span>
+                      <img src="images/flags/4x3/gb.svg" alt="Inglés" class="flag-icon-svg" />
                       <span>{{'HEADER.LANGUAGES.ENGLISH' | translate}}</span>
                     </button>
                   </div>

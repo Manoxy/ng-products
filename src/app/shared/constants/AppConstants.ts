@@ -40,3 +40,12 @@ export const MESSAGE_CONFIG = {
 } as const;
 
 export const DEFAULT_ERROR = 'SHARED.DEFAULT_ERROR'
+
+export const PRODUCTS_LIST_SIZE = [5, 10 , 30];
+
+
+export const XSRF_METHODS: string[] = ['POST', 'PUT', 'DELETE', 'PATCH'];
+
+export const XSRF_TOKEN_NAME = 'XSRF-TOKEN';
+
+export const X_XSRF_TOKEN_HEADER = 'X-XSRF-TOKEN';

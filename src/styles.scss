@@ -3,9 +3,9 @@
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
+
+@use 'styles/variables' as *;
 @use '@angular/material' as mat;
-// ✅ Importa la versión minificada
-@import 'flag-icons/css/flag-icons.css';
 
 html {
   height: 100%;
@@ -39,3 +39,184 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.d-none {
+  display: none !important;
+}
+
+.m-t-1 {
+  margin-top: 1em;
+}
+
+.m-t-2 {
+  margin-top: 2em;
+}
+
+.m-t-3 {
+  margin-top: 3em;
+}
+
+.m-t-4 {
+  margin-top: 4em;
+}
+
+.m-b-1 {
+  margin-bottom: 1em;
+}
+
+.m-b-2 {
+  margin-bottom: 2em;
+}
+
+.m-b-3 {
+  margin-bottom: 3em;
+}
+
+.m-b-4 {
+  margin-bottom: 4em;
+}
+
+.m-r-3px {
+  margin-right: 3px;
+}
+
+.m-r-5px {
+  margin-right: 5px;
+}
+
+.m-r-7px {
+  margin-right: 7px;
+}
+
+.m-r-10px {
+  margin-right: 10px;
+}
+
+
+.m-l-3px {
+  margin-left: 3px;
+}
+
+.m-l-5px {
+  margin-left: 5px;
+}
+
+.m-l-7px {
+  margin-left: 7px;
+}
+
+.m-l-10px {
+  margin-left: 10px;
+}
+.inline-flex {
+  display: inline-flex;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: $radius-sm;
+  padding: 15px 15px 15px 15px;
+  height: 42px;
+  font-size: 16px;
+  color: white;
+}
+
+button:not(disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+
+.btn-primary {
+  background-color: $brand_accent;
+
+  &:hover:not(:disabled) {
+    background-color: $brand_secondary;
+  }
+}
+
+.btn-secondary {
+  background-color: $brand_secondary;
+
+  &:hover:not(:disabled) {
+    background-color: $brand_accent;
+  }
+}
+
+
+.btn-tertiary {
+  background-color: $brand_primary;
+
+  &:hover:not(:disabled) {
+    background-color: $brand_tertiary;
+  }
+}
+
+.primary {
+  color: $brand_primary;
+}
+
+.secondary {
+  color: $brand_secondary;
+}
+
+.tertiary {
+  color: $brand_tertiary;
+}
+
+.accent {
+  color: $brand_accent;
+}
+
+/* ========================================== */
+/* Estilos Globales para la Tabla de Productos */
+/* ========================================== */
+.products-container {
+  .table-card {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      /* Cabeceras con fondo corporativo secundario y texto blanco */
+      th.mat-header-cell {
+        background-color: var(--brand-secondary, #6750a4) !important; // Ajusta según tu variable o pon directamente el color corporativo
+        color: white !important;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 16px 24px;
+        border-bottom: 2px solid #e0e0e0 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+
+        &:last-child {
+          border-right: none !important;
+        }
+
+        .mat-sort-header-content,
+        .mat-sort-header-arrow,
+        .mat-sort-header-container {
+          color: white !important;
+        }
+      }
+
+      /* Celdas de datos con líneas divisorias verticales y horizontales */
+      td.mat-cell {
+        padding: 16px 24px;
+        color: var(--mat-sys-on-surface, #1d1b20);
+        font-size: 14px;
+        border-bottom: 1px solid #e0e0e0 !important;
+        border-right: 1px solid #e0e0e0 !important;
+
+        &:last-child {
+          border-right: none !important;
+        }
+      }
+    }
+  }
+}
+

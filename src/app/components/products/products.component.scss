@@ -1,0 +1,225 @@
+@use 'styles/variables' as *;
+
+.products-container {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: $bg-main;
+  min-height: calc(100vh - 120px);
+
+  // Cabecera estilizada
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .title-icon {
+        font-size: 24px;
+        color: $brand-tertiary;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 600;
+        color: $text-main;
+      }
+    }
+
+
+
+
+    .create-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      border-radius: $radius-sm;
+      padding: 15px 15px 15px 15px;
+      height: 42px;
+      font-size: 16px;
+      color: white;
+      background-color: $brand_secondary;
+
+      &:hover:not(:disabled) {
+        background-color: $brand_accent;
+      }
+    }
+  }
+
+  // Sección de filtros
+  .filters-section {
+    margin-bottom: 24px;
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+
+      .filter-field {
+        width: 100%;
+
+        ::ng-deep .mat-mdc-text-field-wrapper {
+          background-color: $bg-surface;
+          border-radius: $radius-sm;
+        }
+
+        .search-icon {
+          color: $text-muted;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  // Tarjeta contenedora de la tabla unificada con variables
+  .table-card {
+    background: $bg-surface;
+    border-radius: $radius-md;
+    overflow: hidden;
+    border: 1px solid $border-color;
+    box-shadow: $shadow-card;
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      // Forzamos con ::ng-deep para saltarnos el encapsulation de Angular Material en los headers
+      ::ng-deep th.mat-header-cell {
+        background-color: $brand_secondary !important;
+        color: white !important;
+        font-weight: 600;
+        font-size: 13px;
+        padding: 16px 24px;
+        border-bottom: 2px solid $border-color !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.2) !important; // Línea de separación clara entre columnas del header
+
+        &:last-child {
+          border-right: none !important;
+        }
+
+        // Aseguramos también el color de los textos o iconos de ordenación si los hubiera
+        .mat-sort-header-content, .mat-sort-header-arrow {
+          color: white !important;
+        }
+      }
+
+      // Celdas de datos con líneas divisorias verticales y horizontales bien definidas
+      ::ng-deep td.mat-cell {
+        padding: 16px 24px;
+        color: $text-main;
+        font-size: 14px;
+        border-bottom: 1px solid $border-color !important;
+        border-right: 1px solid $border-color !important; // Línea vertical de separación entre celdas
+
+        &:last-child {
+          border-right: none !important;
+        }
+      }
+
+      .table-row {
+        transition: background-color 0.2s ease;
+        &:hover {
+          background-color: $bg-main;
+        }
+      }
+
+      .font-medium {
+        font-weight: 500;
+        color: $text-main;
+      }
+
+      // Badge de stock dinámico usando colores de estado
+      .stock-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        background-color: #e0f2fe;
+        color: $state-info;
+
+        &.low-stock {
+          background-color: #fee2e2;
+          color: $state-danger;
+        }
+      }
+
+      .actions-cell {
+        text-align: right;
+        .detail-btn {
+          border-radius: $radius-sm;
+          font-size: 13px;
+          height: 32px;
+          padding: 0 12px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+      }
+    }
+
+    mat-paginator {
+      background-color: $bg-surface;
+      border-top: 1px solid $border-color;
+    }
+  }
+
+  // Estado vacío estilizado
+  .empty-state {
+    background: $bg-surface-medium;
+    border-radius: $radius-md;
+    padding: 60px 20px;
+    text-align: center;
+    border: 1px solid $border-color;
+    box-shadow: $shadow-card;
+
+    .empty-icon {
+      font-size: 48px;
+      color: $text-muted;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: $text-main;
+    }
+
+  }
+}
+
+.empty-products-info {
+  font-size: 16px;
+  color: black;
+  margin: 0 0 24px 0;
+}
+
+.btn-create-first-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border-radius: $radius-sm;
+  padding: 15px 15px 15px 15px;
+  height: 38px;
+  font-size: 16px;
+  color: white;
+  background-color: $brand_accent;
+
+  &:hover:not(:disabled) {
+    background-color: $brand_secondary;
+  }
+}

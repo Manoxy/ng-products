@@ -2,16 +2,21 @@
   "GENERAL": {
     "TITLE": "Productos",
     "SLOGAN": "Digital Solutions",
-    "LANG": "Idioma: ",
+    "LANG": "Idioma",
     "PAGES": {
       "LOGIN": "Iniciar Sesión",
       "HOME": "Inicio",
-      "PRODUCTS": "Productos",
-      "CONFIG": "Configuración"
+      "PRODUCTS_LIST": "Listado de Productos",
+      "CREATE_PRODUCT": "Crear Producto",
+      "EDIT_PRODUCT": "Editar Producto",
+      "CONFIGURATION": "Configuración",
+      "MY_ACCOUNT": "Mi Cuenta"
     }
   },
   "SHARED": {
-    "DEFAULT_ERROR": "Ha ocurrido un error, por favor inténtelo otra vez o póngase en contacto con nosotros"
+    "DEFAULT_ERROR": "Ha ocurrido un error, por favor inténtelo otra vez o póngase en contacto con nosotros",
+    "INVALID_FORM": "Uno o mas campos son obligatorios, por favor comprueba que todos los campos obligatorios no están vacios",
+    "CANCEL": "Cancelar"
   },
   "LOGO": {
     "COMPANY_NAME_PART_1": "MI ",
@@ -33,6 +38,55 @@
       "OK_LOGIN": "Se ha logado correctamente",
       "WRONG_PWD": "Usuario o contraseña incorrecta, por favor inténtelo otra vez"
     }
+  },
+  "PRODUCTS": {
+    "PRODUCTS_LIST": {
+      "TITLE": "Listado de Productos",
+      "OK": "Se han obtenido correctamente los productos",
+      "INFO_NO_PRODUCTS": "No se han encontrado productos",
+      "KO": "Se ha encontrado un error a la hora de intentar obtener los productos",
+      "GO_TO_DETAIL": "Ver Detalle de Producto",
+      "CREATE": "Crear un producto",
+      "TABLE": {
+        "ID": "Id",
+        "NAME": "Nombre",
+        "STOCK": "Stock",
+        "PRICE": "Precio €",
+        "ACTIONS": "Acciones"
+      },
+      "EMPTY_LIST": {
+        "ITEMS_NOT_FOUND": "No se encontraron productos",
+        "INFO": "Intenta ajustar tu filtro de búsqueda o crea un nuevo producto para comenzar.",
+        "CREATE_FIRST_PRODUCT": "Crear primer producto"
+      },
+      "INTERNAL_SERVER_ERROR": "Ha ocurrido un error a la hora de crear o editar el producto"
+    },
+    "PRODUCTS_DETAIL": {
+      "NAME_PLACEHOLDER": "Nombre del producto",
+      "OK_CREATE": "Ha creado correctamente el producto {{name}}",
+      "KO_CREATE": "Ha ocurrido un error a la hora de crear el producto {{name}}",
+      "OK_UPDATE": "Ha actualizado correctamente el producto {{name}}",
+      "KO_UPDATE": "Ha ocurrido un error a la hora de actualizar el producto {{name}}",
+      "IMAGE": {
+        "LABEL": "Imagen del Producto",
+        "DROP_INFO": "Arrastra tu imagen aquí o ",
+        "CLICK_SPAN": "haz click para seleccionar",
+        "SMALL": "Soporta PNG, JPG (Máx. 1 imagen por ahora)"
+      },
+      "ACTIONS": {
+        "SAVE": "Guardar Producto",
+        "UPDATE": "Actualizar Cambios"
+      }
+    }
+  },
+  "PAGINATOR": {
+    "ITEMS_PER_PAGE": "Elementos por página:",
+    "NEXT_PAGE": "Siguiente página",
+    "PREVIOUS_PAGE": "Página anterior",
+    "FIRST_PAGE": "Primera página",
+    "LAST_PAGE": "Última página",
+    "OF": "de",
+    "RANGE_EMPTY": "0 de {{length}}"
   },
   "HEADER": {
     "LOGO_TITLE": "Mi Empresa Soluciones Digitales, S.L.",
